@@ -5,8 +5,9 @@ from wtforms.validators import DataRequired, Length, Email
 class ContactForm(FlaskForm):
     charityName = StringField('Name', [DataRequired()])
     charityEmail = StringField('Email', [DataRequired()])
-    category = SelectField('Category', choices=[('select','Select a category'),
-                                                ('Animals', 'Animals Welfare')])
+    category = SelectField('Category', choices=[('select', 'Select a category'),
+                                                ('Animals', 'Animals Welfare'),
+                                                ('Housing', 'Housing')])
     tagLine = StringField('Tagline', [DataRequired()])
     mission = StringField('Mission', [DataRequired()])
     charityWebsite = StringField('Charity Website', [DataRequired()])
