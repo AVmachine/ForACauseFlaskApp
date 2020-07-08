@@ -8,6 +8,7 @@ application = Flask(__name__)
 # methods=['GET', 'POST']
 @application.route('/', methods=['GET', 'POST'])
 def index():
+    submission_successful = False
     form = ContactForm()
     if request.method =='POST':
         newId = GetNextId(form.category.data)
@@ -18,9 +19,8 @@ def index():
         print(form.mission.data)
         print(form.charityWebsite.data)
         register_nonProfit(newId, str(form.charityName.data), str(form.charityEmail.data), str(form.category.data), str(form.tagLine.data), str(form.mission.data), str(form.charityWebsite.data))
-
-
-    return render_template('home.html', form=form)
+        submission_successful = True
+    return render_template('home.html', form=form, submission_successful=submission_successful)
 
 
 SECRET_KEY = os.urandom(32)
