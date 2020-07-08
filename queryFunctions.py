@@ -10,12 +10,11 @@ def register_nonProfit(id, name, email, category, tagline, mission, website):
     dynamodb_client_cloud = boto3.client("dynamodb", region_name="us-east-2")
 
     companyInfo = {
-        "TableName": "Animals",
+        "TableName": str(category),
         "Item": {
             "ID": {"N": "{id}".format(id=id)},
             "Name": {"S": name},
             "Email": {"S": email},
-            "Category": {"S": category},
             "Tagline": {"S": tagline},
             "Mission": {"S": mission},
             "Website": {"S": website},
