@@ -1,9 +1,6 @@
-from keys import CarKeys
 import boto3
 from botocore.exceptions import ClientError
 from boto3.dynamodb.conditions import Key
-
-car = CarKeys()
 
 def register_nonProfit(id, name, email, category, tagline, mission, website):
     #dynamodb_client_local = boto3.client("dynamodb", endpoint_url="http://localhost:8000")
