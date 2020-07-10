@@ -11,7 +11,7 @@ def index():
     submission_successful = False
     form = ContactForm()
     if request.method =='POST':
-        newId = GetNextId(form.category.data)
+        newId = GetNextId("CharityInfo")
         print(form.charityName.data)
         print(form.charityEmail.data)
         print(form.category.data)
