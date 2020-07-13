@@ -5,10 +5,6 @@ from queryFunctions import register_nonProfit, GetNextId
 
 application = Flask(__name__)
 
-SECRET_KEY = os.urandom(32)
-application.config['SECRET_KEY'] = SECRET_KEY
-
-
 # methods=['GET', 'POST']
 @application.route('/', methods=['GET', 'POST'])
 def index():
@@ -29,6 +25,8 @@ def index():
 
 
 
+SECRET_KEY = os.urandom(32)
+application.config['SECRET_KEY'] = SECRET_KEY
 
 if __name__ == '__main__':
     application.run(debug=True)

@@ -1,6 +1,6 @@
 #!/Users/alexanthony/Programs/ForACauseFlaskApp/venv/bin/python
 
-# Author: 
+# Author:
 # Contact: grubert@users.sf.net
 # Copyright: This module has been placed in the public domain.
 
