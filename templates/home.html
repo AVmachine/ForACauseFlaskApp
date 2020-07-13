@@ -71,33 +71,55 @@
           <div class="p-5">
             <h2 class="display-4">Registration</h2>
             <p>Please fill out the form below, so when a user asks for some information about your charity, we can provide it to them! :)</p>
-            <form action="" method="post" novalidate>
+            <form action="{{ url_for('index') }}" method="post" novalidate>
               <div class="form-group">
+                  {{ form.csrf_token }}
                   {{form.charityName.label}}
                   {{ form.charityName(size = 32, class="form-control", placeholder='Charity name goes here...')}}
+                  {% if form.charityName.errors %}
+                        <ul class="error">{% for error in form.charityName.errors %}
+                            <li> {{ error }}</li>
+                        {% endfor %}
+                        </ul>
+                  {% endif %}
               </div>
               <div class="form-group">
                   {{form.charityEmail.label}}
                   {{form.charityEmail(size = 32, class="form-control", type="email", placeholder='charity@email.com')}}
+                   {% if form.charityEmail.errors %}
+                        <ul class="error">{% for error in form.charityEmail.errors %} <li> {{ error }}</li>{% endfor %}</ul>
+                  {% endif %}
               </div>
               <div class="form-group">
                   {{ form.category.label }}
                   {{ form.category(size = 32, class="form-control", placeholder='Animal Rights') }}
+                   {% if form.category.errors %}
+                        <ul class="error">{% for error in form.category.errors %} <li> {{ error }}</li>{% endfor %}</ul>
+                  {% endif %}
               </div>
               <div class="form-group">
                   {{form.tagLine.label}}
                   {{form.tagLine(size = 32, class="form-control", placeholder='You tag line goes here...')}}
+                   {% if form.tagLine.errors %}
+                        <ul class="error">{% for error in form.tagLine.errors %} <li> {{ error }}</li>{% endfor %}</ul>
+                  {% endif %}
               </div>
               <div class="form-group">
                   {{form.mission.label}}
                   {{form.mission(size = 32, class="form-control", placeholder="The charity's mission is to (start with a verb for Alexa to speak)...")}}
+                   {% if form.mission.errors %}
+                        <ul class="error">{% for error in form.mission.errors %} <li> {{ error }}</li>{% endfor %}</ul>
+                  {% endif %}
               </div>
               <div class="url">
                   {{form.charityWebsite.label}}
                   {{form.charityWebsite(size = 32, class="form-control", placeholder='www.example.com')}}
+                   {% if form.charityWebsite.errors %}
+                        <ul class="error">{% for error in form.charityWebsite.errors %} <li> {{ error }}</li>{% endfor %}</ul>
+                  {% endif %}
               </div>
               <div class="form-group">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" value="Submit" class="btn btn-primary">Submit</button>
                 <button type="reset" class="btn btn-primary">Clear</button>
               </div>
             </form>
