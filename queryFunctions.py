@@ -45,3 +45,33 @@ def GetNextId(tableName):
     except BaseException as error:
         print("Unknown error while putting item: " + error.response['Error']['Message'])
 
+
+def query_if_already_exists(name):
+    #dynamodb_client_local = boto3.client("dynamodb", endpoint_url="http://localhost:8000")
+    dynamodb_client_cloud = boto3.resource("dynamodb", region_name="us-east-2")
+    print("hi")
+
+    try:
+        response = dynamodb_client_cloud.scan(
+            TableName="CharityInfo",
+            FilterExpression='#n = :n',
+            ExpressionAttributeNames={
+                "#n": "Name"
+            },
+            ExpressionAttributeValues={
+                ":n": {"S": name}
+            }
+        )
+
+        count = 0
+        for i in response["Items"]:
+            count += 1
+
+        if len(response["Items"]) > 0:
+            return True
+        else:
+            return False
+        # Handle response
+    except BaseException as error:
+        return "Unknown error while querying: " + error.response['Error']['Message']
+

@@ -9,7 +9,6 @@ application = Flask(__name__)
 @application.route('/', methods=['GET', 'POST'])
 def index():
     form = ContactForm()
-    print(form.validate_on_submit())
     if form.validate_on_submit():
         newId = GetNextId("CharityInfo")
         print(form.charityName.data)
