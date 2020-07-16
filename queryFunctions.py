@@ -48,7 +48,7 @@ def GetNextId(tableName):
 
 def query_if_already_exists(name):
     #dynamodb_client_local = boto3.client("dynamodb", endpoint_url="http://localhost:8000")
-    dynamodb_client_cloud = boto3.resource("dynamodb", region_name="us-east-2")
+    dynamodb_client_cloud = boto3.client("dynamodb", region_name="us-east-2")
     print("hi")
 
     try:
