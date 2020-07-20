@@ -3,6 +3,8 @@ from wtforms import StringField, TextField, SubmitField, SelectField, TextAreaFi
 from wtforms.validators import DataRequired, Length, Email, email_validator, ValidationError
 from queryFunctions import query_if_already_exists
 
+
+#Using WhatTheForms
 class ContactForm(FlaskForm):
     charityName = StringField('Name', [DataRequired()])
     charityEmail = StringField('Email', [DataRequired(), Email()])
@@ -11,6 +13,7 @@ class ContactForm(FlaskForm):
     mission = TextAreaField('Mission', [DataRequired()])
     charityWebsite = StringField('Charity Website')
 
+#custom validation, checks if a name is already in use
     def validate_charityName(form, field):
         print(field.data)
         result = query_if_already_exists(field.data)
